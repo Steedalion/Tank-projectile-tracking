@@ -16,10 +16,19 @@ public class Shoot : MonoBehaviour
     
     void Fire()
     {
+        if(!enableFire) return;
         GameObject shell = Instantiate(shellPrefab, shellSpawnPos.transform.position, shellSpawnPos.transform.rotation);
         shell.GetComponent<Rigidbody>().velocity = speed*transform.forward;
-        
+        enableFire = false;
+        Invoke(nameof(EnableFire),0.5f);
     }
+
+    private void EnableFire()
+    {
+         enableFire = true;
+    }
+
+    private bool enableFire = true;
 
     // Update is called once per frame
     void Update()

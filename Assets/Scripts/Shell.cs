@@ -15,7 +15,7 @@ public class Shell : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.tag == "tank")
+        if (col.gameObject.CompareTag("tank"))
         {
             GameObject exp = Instantiate(explosion, this.transform.position, Quaternion.identity);
             Destroy(exp, 0.5f);
@@ -26,18 +26,15 @@ public class Shell : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // speedZ = force / mass;
+        rb = GetComponent<Rigidbody>();
+        
     }
+
+    public Rigidbody rb;
 
     // Update is called once per frame
     void LateUpdate()
     {
-        acceleration = force / mass;
-        speedZ += acceleration * Time.deltaTime;
-        gAccel = gravity / mass;
-        speedY += gAccel * Time.deltaTime;
-        this.transform.Translate(0, speedY, speedZ);
-
-        force = 0;
+        transform.forward = rb.velocity;
     }
 }
