@@ -1,4 +1,6 @@
-# [Unity](https://unity.com/) Prototype
+# [Unity](https://unity.com/) Prototype: Tanks
+
+Basic AI, tracking a target in order to fire projectiles.
 
 Basic AI, tracking a target in order to fire projectiles.
 
